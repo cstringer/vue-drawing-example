@@ -40,7 +40,7 @@ var app = new Vue({
     }
   },
 
-	methods: {
+  methods: {
 
     // return index of most recent drawn path
     currentPathIndex: function() {
