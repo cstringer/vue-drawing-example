@@ -1,0 +1,30 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+header {
+  background-color: rgba(100,100,100,0.25);
+  font-size: 0.8em;
+  padding: 0.5em;
+  position: absolute;
+  width: 100%;
+}
+
+svg {
+  cursor: crosshair;
+  height: 100%;
+  position: absolute;
+  stroke: #bbb;
+  stroke-width: 1;
+  width: 100%;
+}
+
+path {
+  fill: none;
+  stroke: #00f;
+  stroke-linecap: round;
+  stroke-width: 5;
+}
