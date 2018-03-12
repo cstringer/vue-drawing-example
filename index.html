@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
   <head>
     <title>Vue.js test</title>
     <meta charset="utf-8"/>
@@ -8,17 +9,8 @@
   </head>
 
   <body>
-
-    <div id="root">
-
-      <header>{{ message }}</header>
-      <svg v-on:mousedown="startPath" v-on:mousemove="addToPath" v-on:mouseup="endPath">
-        <path v-bind:d="renderPath"></path>
-      </svg>
-
-    </div>
-
+    <div id="root"></div>
     <script src="app.js"></script>
-
   </body>
+
 </html>
