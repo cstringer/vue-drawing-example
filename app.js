@@ -5,9 +5,17 @@
 var app = new Vue({
   el: '#root',
 
+  template: 
+  '<div>' +
+    '<header>{{ message }}</header>' + 
+    '<svg v-on:mousedown="startPath" v-on:mousemove="addToPath" v-on:mouseup="endPath">' +
+      '<path v-bind:d="renderPath"></path>' +
+    '</svg>' +
+  '</div>'
+  ,
+
   data: {
 
-    // state flag, true during drawing operation
     isDrawing: false,
 
     // array of array of coordinates of all drawn paths: 
@@ -22,19 +30,15 @@ var app = new Vue({
 
     // create "d" attribute for <path> element
     renderPath: function() {
-      var pathStr = "", p, points, i, pt;
-      for (p = 0; p < this.paths.length; p++) {
-        points = this.paths[p];
-        for (i = 0; i < points.length; i++) {
-          pt = points[i];
-          pathStr += i === 0 ? 'M ' : 'L ';
-          pathStr += pt[0] + ',' + pt[1];
-        }
-      }
-      return pathStr;
+      return this.paths.reduce(function(str, path) {
+        return str + path.reduce(function(s, point, idx) {
+          var ptStr = (idx === 0) ? 'M ' : 'L ';
+          ptStr += point[0] + ',' + point[1];
+          return s + ptStr;
+        }, '');
+      }, '');
     },
 
-    // display a status message
     message: function() {
       return this.isDrawing ? 'Drawing!' : 'Waiting...';
     }
